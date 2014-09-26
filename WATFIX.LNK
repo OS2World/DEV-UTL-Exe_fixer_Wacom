@@ -1,0 +1,7 @@
+system os2v2
+# debug all
+name watfix.exe
+file watfix.obj
+option quiet
+option cache
+option stack=16384

@@ -1,0 +1,30 @@
+!ifdef __LOADDLL__ 
+! loaddll wcc      wccd 
+! loaddll wccaxp   wccdaxp 
+! loaddll wcc386   wccd386 
+! loaddll wpp      wppdi86 
+! loaddll wppaxp   wppdaxp 
+! loaddll wpp386   wppd386 
+! loaddll wlink    wlink 
+! loaddll wlib     wlibd 
+!endif 
+
+CC     = wcc386
+ASM    = wasm
+CFLAGS = -bt=os2 -zq -w4
+AFLAGS = -bt=os2 -zq -w4
+OBJS   = watfix.obj
+OTHER  = watfix.lnk
+
+
+watfix.exe: $(OBJS) $(OTHER)
+	wlink106 @watfix.lnk
+
+.c:     .
+.asm:   .
+
+.c.obj:
+	$(CC) $(CFLAGS) $[*.c -fo=$[*.obj
+        
+.asm.obj:
+	$(ASM) $(AFLAGS) $[*.asm -fo=$[*.obj
